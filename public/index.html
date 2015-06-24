@@ -5,17 +5,9 @@
     <title>Галерея</title>
     <link rel="stylesheet" href="/compile/css/all.css"/>
     <script src="/bower_components/requirejs/require.js"></script>
+    <script src="/app/requirejs.js"></script>
 </head>
 <body>
-<script src="/js/require.js"></script>
-<script>
-    require(['app', 'bootstrap'], function(app) {
-        var images = [];
-
-
-        app.start();
-    });
-</script>
-<div class="test"></div>
+<ui-view></ui-view>
 </body>
 </html>
