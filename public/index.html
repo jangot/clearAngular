@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src="/bower_components/requirejs/require.js"></script>
+</head>
+<body>
+<script src="/js/require.js"></script>
+<script>
+    require(['app', 'bootstrap'], function(app) {
+        var images = [];
+
+
+        app.start();
+    });
+</script>
+</body>
+</html>
