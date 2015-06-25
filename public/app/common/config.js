@@ -3,6 +3,7 @@ define([
     'app',
 
     'common/services/expandView',
+    'common/services/stateData',
 
     'common/views/body/controller',
     'common/views/index/controller',
@@ -22,12 +23,28 @@ define([
         });
     });
 
+    app.run(function($rootScope, $state, stateData) {
+        $rootScope.$on('$stateChangeSuccess', function() {
+            angular.forEach(stateData, function(value, key) {
+                delete stateData[key];
+            });
+
+            if ($state.current.name !== '') {
+                angular.extend(stateData, $state.current.data);
+            }
+
+        });
+    });
+
     app.config(function($stateProvider) {
         $stateProvider.state(
             'body',
             {
                 abstract: true,
-                view: 'common/body'
+                view: 'common/body',
+                data: {
+                    title: 'Body title'
+                }
             }
         );
 
@@ -36,10 +53,8 @@ define([
             {
                 url: '/',
                 view: 'common/index',
-                resolve: {
-                    title: function() {
-                        return 'Главная страниыа';
-                    }
+                data: {
+                    title: 'Главная страница'
                 }
             }
         );

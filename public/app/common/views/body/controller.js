@@ -5,7 +5,7 @@ define([
 ], function(app){
     "use strict";
 
-    app.controller('CommonBody', function($scope){
-        $scope.title = '';
+    app.controller('CommonBody', function($scope, stateData){
+        $scope.stateData = stateData;
     });
 });
