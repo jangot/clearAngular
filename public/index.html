@@ -3,11 +3,13 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Галерея</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/compile/css/all.css"/>
-    <script src="/bower_components/requirejs/require.js"></script>
-    <script src="/app/requirejs.js"></script>
+    <script src="/bower_components/requirejs/require.js" data-main="/app/requirejs"></script>
 </head>
 <body>
-<ui-view></ui-view>
+<div class="container">
+    <ui-view></ui-view>
+</div>
 </body>
 </html>

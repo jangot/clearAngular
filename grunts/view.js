@@ -26,7 +26,7 @@ module.exports = function(builder) {
         .addConfig('stylus', 'compile', {
             files: {
                 '<%= compilePath %>/css/all.css': [
-                    '<%= publicPath %>/stylus/style/**/*.styl'
+                    '<%= publicPath %>/**/*.styl'
                 ]
             }
         })

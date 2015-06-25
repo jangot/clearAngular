@@ -9,7 +9,7 @@ define([
 ], function(app) {
     "use strict";
 
-    app.factory('apiResource', function(config, decorateAction) {
+    app.factory('apiResource', function($resource, config, decorateAction) {
         var DEFAULT_ACTIONS = {
             get: { method: 'GET' },
             save: { method: 'PUT' },

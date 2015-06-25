@@ -3,7 +3,7 @@ define([
     'app'
 
 ], function(app) {
-    app.service('decorateAction', function($q, $http) {
+    app.factory('decorateAction', function($q, $http) {
 
         function transformResponse(response) {
             return response;
