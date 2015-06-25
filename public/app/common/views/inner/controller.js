@@ -5,5 +5,5 @@ define([
 ], function(app){
     "use strict";
 
-    app.controller('CommonIndex', function() {});
+    app.controller('CommonInner', function() {});
 });

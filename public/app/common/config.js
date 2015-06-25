@@ -7,6 +7,8 @@ define([
 
     'common/views/body/controller',
     'common/views/index/controller',
+    'common/views/inner/controller',
+
     'common/directives/pageTitle/directive'
 
 ], function(app) {
@@ -55,6 +57,17 @@ define([
                 view: 'common/index',
                 data: {
                     title: 'Главная страница'
+                }
+            }
+        );
+
+        $stateProvider.state(
+            'body.inner',
+            {
+                url: '/inner',
+                view: 'common/inner',
+                data: {
+                    title: 'Внутренняя страница'
                 }
             }
         );
