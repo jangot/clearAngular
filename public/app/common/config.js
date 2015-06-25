@@ -2,37 +2,38 @@ define([
 
     'app',
 
-    'common/services/routeConstructor',
+    'common/services/expandView',
 
-    'common/view/body/controller',
-    'common/view/index/controller',
+    'common/views/body/controller',
+    'common/views/index/controller',
     'common/directives/pageTitle/directive'
 
 ], function(app) {
-    app.config(function($locationProvider, $urlRouterProvider) {
+    app.config(function($locationProvider, $stateProvider, expandViewProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
         });
+
+        $stateProvider.decorator('views', function (state, parent) {
+            var views = parent(state);
+
+            return _.mapValues(views, expandViewProvider.expand);
+        });
     });
 
-    app.config(function($stateProvider, routeConstructorProvider) {
+    app.config(function($stateProvider) {
         $stateProvider.state(
             'body',
-            routeConstructorProvider.build({
+            {
                 abstract: true,
-                resolve: {
-                    title: function() {
-                        return '';
-                    }
-                },
                 view: 'common/body'
-            })
+            }
         );
 
         $stateProvider.state(
             'body.index',
-            routeConstructorProvider.build({
+            {
                 url: '/',
                 view: 'common/index',
                 resolve: {
@@ -40,18 +41,7 @@ define([
                         return 'Главная страниыа';
                     }
                 }
-            })
-        );
-
-        $stateProvider.state(
-            'body.404',
-            routeConstructorProvider.build({
-                url: '/404',
-                view: 'common/404',
-                page: {
-                    title: 'Страница не найдена'
-                }
-            })
+            }
         );
     });
 });
